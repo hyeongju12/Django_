@@ -7,18 +7,36 @@ from shareRes.models import *
 def index(request):
     # return HttpResponse('index')
     categories = Category.objects.all()
-    content = {'categories' : categories}
+    restaurants = Restaurant.objects.all()
+    content = {'categories' : categories, 'restaurants' : restaurants}
     return render(request, 'shareRes/index_init.html', content)
 
-def restaurantDetail(request):
+def restaurantDetail(request, res_id):
+    restaurant = Restaurants.objects.get(id = res_id)
+    content = {'restaurant' : restaurant}
     # return HttpResponse('restaurantDetail')
-    return render(request, 'shareRes/restaurantDetail_init.html')
+    return render(request, 'shareRes/restaurantDetail_init.html', content)
 
 def restaurantCreate(request):
+    categories = Category.objects.all()
+    content = {'categories' : categories}
     # return HttpResponse('restaurantCreate')
-    return render(request, 'shareRes/restaurantCreate_init.html')
+    return render(request, 'shareRes/restaurantCreate_init.html', content)
 
-def categoryCreate(request):
+def Create_restaurant(request):
+    category_id = request.POST['resCategory']
+    category = Category.objects.get(id = category_id)
+    name = request.POST['resTitle']
+    link = request.POST['resLink']
+    content = request.POST['resContent']
+    keyword = request.POST['resLoc']
+    new_res = Restaurant(category=category, restaurant_name = name, 
+                            restaurant_link = link, restaurant_content = content,
+                                restaurant_keyword = keyword)
+    new_res.save()
+    return HttpResponseRedirect(reverse('index'))
+
+def categoryCreate(request): 
     # return HttpResponse('categoryCreate')
     categories = Category.objects.all()
     content = {'categories' : categories}
