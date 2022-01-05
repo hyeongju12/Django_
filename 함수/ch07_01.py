@@ -12,6 +12,8 @@ def work():
 
 # 메인스레드 실행되는 부분
 worker = threading.Thread(target = work)
+
+#wprler.daemon = True이면 메인스레드 종료시 서브 스레드도 같이 종료된다.
 worker.daemon = True
 worker.start()
 
