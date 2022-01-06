@@ -20,7 +20,7 @@ def sendEmail(request):
     content = {'inputContent' : inputContent, 'restaurant' : restaurants}
     # smtp
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.login("hyeongju12@gmail.com", "DBgudwn1!")
+    server.login("hyeongju12@gmail.com", "")
 
     msg_html = render_to_string('sendEmail/email_format.html', content)
     msg = EmailMessage(subject=inputTitle, body=msg_html, from_mail="hyeongjnu12@gmail.com", bcc=inputReceiver.split(','))
