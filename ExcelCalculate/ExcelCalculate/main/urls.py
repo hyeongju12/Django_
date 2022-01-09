@@ -20,6 +20,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name="main_index"),
     path('signup', views.signup, name="main_signup"),
+    path('signup/join', views.join, name="main_join"),
     path('signin', views.signin, name="main_signin"),
     path('verifyCode', views.VerifyCode, name="main_VerifyCode"),
     path('verify', views.verify, name='main_verify'),
