@@ -7,8 +7,8 @@ from django.template.loader import render_to_string
 def send(receiverEmail, verifyCode):
     try:
         content = {'verifyCode' : verifyCode}
-        msg_html = render_to_string('sendEmail/email_format.html', content)
-        msg = EmailMessage(subject="인증 코드 발송 메일", body=msg_html, from_email="hyeongju12@gmail.com", bcc=[receiverEmail])
+        msg_html = render_to_string('sendEmail/email_format.html',content)
+        msg = EmailMessage(subject="인증코드 발송 메일",body=msg_html,from_email="hyeongju12@gmail.com",bcc=[receiverEmail])
         msg.content_subtype='html'
         msg.send()
         return True
