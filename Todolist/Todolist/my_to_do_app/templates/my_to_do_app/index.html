@@ -68,6 +68,24 @@
                     {% endfor %}
                 </ul>
             </div>
+            <!-- Todolist is Done! -->
+            <div class="toDo_DoneDiv">
+                <ul class="list-group">
+                    {% for todo in todos %}
+                        {% if todo.isDone == True %}
+                        <form action="./reTodo/" method="GET">
+                            <div class="input-group" name='todo1'>
+                                <li class="list-group-item">{{todo.content}}</li>
+                                <input type="hidden" id="todoNum" name="todoNum" value="{{todo.id}}"></input>
+                                <span class="input-group-addon">
+                                    <button type="submit" class="custom-btn btn btn-danger">취소</button>
+                                </span>
+                            </div>
+                        </form>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
         <div class="panel-footer">
             실전예제로 배우는 Django. Project1-TodoList

@@ -30,3 +30,11 @@ def doneTodo(request):
     todo.isDone = True
     todo.save()
     return HttpResponseRedirect(reverse('index'))
+
+def reTodo(request):
+    done_todo_id = request.GET['todoNum']
+    print("완료한 todo의 id", done_todo_id)
+    todo = Todo.objects.get(id = done_todo_id)
+    todo.isDone = False
+    todo.save()
+    return HttpResponseRedirect(reverse('index'))

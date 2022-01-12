@@ -7,5 +7,5 @@ urlpatterns = [
     path('createTodo/', views.createTodo, name='createTodo'),
     # path('deleteTodo/', views.deleteTodo, name='deleteTodo'),
     path('doneTodo/', views.doneTodo, name='doneTodo'),
-
+    path('reTodo/', views.reTodo, name='reTodo'),
 ]
