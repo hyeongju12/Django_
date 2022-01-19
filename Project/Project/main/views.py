@@ -10,7 +10,7 @@ from django.conf import settings
 # Create your views here.
 def index(request):
     if not 'user_id' in request.session.keys():
-        return redirect('')
+        return redirect('main_loginView')
     user_id = request.session['user_id']
     user = User.objects.get(user_id=user_id)
     documents = Document.objects.filter(user_id=user)

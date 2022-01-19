@@ -47,7 +47,7 @@ def email(request):
         code = randint(1000, 9999)
         content = {'verifyCode':code}
         msg_html = render_to_string('signup/email_format.html',content)
-        msg = EmailMessage(subject="인증코드 발송 메일",body=msg_html,from_email="djangoemailtester001@gmail.com",bcc=[user_id])
+        msg = EmailMessage(subject="인증코드 발송 메일",body=msg_html,from_email="test@gmail.com",bcc=[user_id])
         msg.content_subtype='html'
         msg.send()
         request.session['code'] = code
